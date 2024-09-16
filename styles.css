@@ -1,3 +1,18 @@
+/* Fonts */
+@font-face {
+	font-family: 'Outfit';
+	src: url(./assets/fonts/outfit/Outfit-VariableFont_wght.ttf)
+		format('truetype');
+	font-weight: 400 600 700;
+}
+
+@font-face {
+	font-family: 'Young Serif';
+	src: url(./assets/fonts/young-serif/YoungSerif-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
 :root{
     --rose50:hsl(330, 100%, 98%);
     --rose800: hsl(332, 51%, 32%);
@@ -6,6 +21,34 @@
     --stone600:hsl(30, 10%, 34%);
     --stone150: hsl(30, 18%, 87%);
     --stone100:hsl(30, 54%, 90%);
+
+	/* Font sizes */
+	--fs-body: 1rem; /* 16px */
+	--fs-subtitle-secondary: 1.25rem; /* 20px */
+	--fs-subtitle-primary: 1.75rem; /* 28px */
+	--fs-title: 2.25rem; /* 36px */
+
+	/* Font families */
+	--ff-body: 'Outfit', sans-serif;
+	--ff-heading: 'Young Serif', serif;
+
+	/* Font weights */
+	--fw-regular: 400;
+	--fw-semibold: 600;
+	--fw-bold: 700;
+    	/* Spacing */
+	--max-width: 23.4375rem; /* 375px */
+	--space-2xs: 0.25rem; /* 4px */
+	--space-xs: 0.5rem; /* 8px */
+	--space-sm: 0.75rem; /* 12px */
+	--space-md: 1rem; /* 16px */
+	--space-lg: 1.125rem; /* 18px */
+	--space-xl: 1.25rem; /* 20px */
+	--space-2xl: 1.5rem; /* 24px */
+	--space-3xl: 1.75rem; /* 28px */
+	--space-4xl: 2rem; /* 32px */
+	--space-5xl: 2.5rem; /* 40px */
+	--space-6xl: 7.5rem; /* 120px */
 }
 
 *{
@@ -14,8 +57,9 @@
     box-sizing: border-box;
 }
 
+
 body{
-    font-family: 'young-serif', sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: var(--stone100);
     display: flex;
     justify-content: center;
@@ -23,10 +67,16 @@ body{
 }
 
 .card{
-    background-color: var(--rose50);
+    margin: 60px 0 ;
+    background-color: #fff;
     height: auto;
-    width: 500px;
+    width: 600px;
     padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
 .img-container img{
@@ -35,3 +85,128 @@ body{
     height: auto;
     object-fit: cover;
 }
+
+.title-description{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-description h2{
+    color: var(--stone900);
+    font-size: var(--fs-title);
+    font-weight: var(--fw-regular);
+    font-family: var(--ff-heading);
+ }
+
+.title-description p{
+    color: var(--stone900);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    
+}
+
+.preparation-time{
+    background-color:var(--rose50);
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+
+
+.preparation-time h3, .ingredients h3, .instructions h3, .nutrition h3{
+    color: var(--rose800);
+    font-size: var(--fs-subtitle-secondary);
+    font-weight: var(--fw-semibold);
+    margin-bottom: var(--space-md);
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+
+.preparation-item,
+.ingredients__item {
+	display: flex;
+	align-items: center;
+}
+
+.preparation-item::before,
+.ingredients__item::before {
+	content: '';
+    margin-right: 1rem;
+	width: 4px;
+	height:4px;
+	border-radius: 50%;
+	background: var(--rose800);
+}
+.ingredients, .instructions{
+    padding:1rem 0;
+	border-bottom:1px solid #e4ded8;
+}
+
+.ingredients h3, .instructions h3, .nutrition h3{
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-regular);
+    color: var(--brown800)
+}
+
+.preparation-item:not(:last-child),
+.ingredients__item:not(:last-child){
+	margin-bottom: var(--space-xs);
+}
+
+.instructions-item {
+	display: flex;
+	counter-increment: step-counter;
+    margin-bottom: var(--space-xs);
+}
+
+.instructions-item::before {
+	content: counter(step-counter) '.';
+	color: var(--brown800);
+	font-weight: var(--fw-bold);
+	margin-right: 1rem;
+}
+
+
+/* Styles for table */
+.nutrition__table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.nutrition__table tr:not(:last-child) {
+	border-bottom: 1px solid #e4ded8;
+}
+
+.nutrition__table th,
+.nutrition__table td {
+	padding-block: var(--space-sm);
+	text-align: left;
+}
+
+.nutrition__table th {
+	padding-inline-start: var(--space-4xl);
+	font-weight: var(--fw-regular);
+}
+
+.nutrition__table td {
+	padding-inline-end: var(--space-4xl);
+	padding-inline-start: var(--space-md);
+	font-weight: var(--fw-bold);
+	color: var(--brown800);
+}
+
+.nutrition__table--first-row th:first-of-type,
+.nutrition__table--first-row td:first-of-type {
+	padding-top: 1rem;
+}
+
+.nutrition__table--last-row th:first-of-type,
+.nutrition__table--last-row td:first-of-type {
+	padding-bottom: 1rem;
+}
+
